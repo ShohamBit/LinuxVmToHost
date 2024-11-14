@@ -35,6 +35,58 @@
 4. press Enter
 5. Decline the update and continue without updating
 6. ![UpdatingVM]()
-7. If shown keyboadlayout just press enter
-8. ![KeyboardLayout]
-9. 
+7. press enter on any of these screens
+8. ![KeyboardLayout]()
+9. ![ServerType]()
+10. ![NetworkConnections]()
+11. ![ConfigureProxy]()
+12. ![UbuntuArchiveMirror]()
+13. ![GuidedStorgeConfiguration]()
+14. Here press Done and Continue
+15. ![StorgeConfiguration]()
+16. Here you want to setup your server i pick test and 1-8 password
+17. ![ProfileSetup]()
+18. Skip upgrading to ubunto pro
+19. ![UpgradeToUbuntuPro]()
+20. Make sure `Install OpenSSH server` is checked
+21. ![SSHSetup]()
+22. Enter Until downLoad
+23. ![FeaturedServerSnaps]()
+24. Wait for it to install
+25. ![InstallSystem]()
+26. Turn off the machine
+
+## Step 4: Set Up open ssh 
+1. set up Port Forwarding from host port 2222 to VM port 22
+2. machine's settings -> Network -> Advanced -> Port Forwarding
+3. Create a new rule with the following credentials:
+  ```
+  Name: SSH
+  Protocol: TCP
+  Host IP: 127.0.0.1
+  Host Port: 2222
+  Guest IP: 10.0.2.15
+  Guest Port: 22
+  ```
+4. ![PortForwardingRules]()
+5. Boot the machine ( you can run this is a headless)
+6. open cmd 
+7. login to the machine 
+8. ![LoginToVM]()
+   
+## Step 5: *optinal* Set Up auto connect via rsa 
+1. find id_rsa.pub ( usely is under C:/Users/UserName/.ssh)
+2. if doesent exist create with:
+   ``` bash
+   ssh-keygen -t rsa
+   ```
+3. Copy to clip board the rsa key
+4. Open ~/.ssh/authorized_keys
+5. Add the conntents of id_rsa.pub
+6. verify the key works
+7. exit and connect again, if requested any password it doesnt work 
+
+
+
+
+
